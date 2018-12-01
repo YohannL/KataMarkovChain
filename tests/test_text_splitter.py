@@ -1,4 +1,4 @@
-from Core.TextSplitter import TextSplitter
+from KataMarkovChain.Core.TextSplitter import TextSplitter
 
 
 class TestTextSplitter():

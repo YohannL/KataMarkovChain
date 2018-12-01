@@ -1,4 +1,4 @@
-from Core.MarkovChain import MarkovChain, generator_random_number
+from KataMarkovChain.Core.MarkovChain import MarkovChain, generator_random_number
 import pytest
 
 
