@@ -2,12 +2,17 @@ langage: python
 sudo: required
 python:
   - "3.6"
+  -
 virtualenv:
   system_site_packages: true
 # command to install dependencies
+
+before_install:
+  - pip install --upgrade pip- pip install --upgrade pip
+  -
 install:
-  - pip install --upgrade pip
   - pip install -r requirements.txt
+  -
 # command to run tests
 script:
   - pytest
