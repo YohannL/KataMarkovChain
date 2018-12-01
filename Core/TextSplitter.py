@@ -1,5 +1,6 @@
 import re
 
+
 class TextSplitter:
     @staticmethod
     def split(sentence):
