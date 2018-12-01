@@ -1,9 +1,6 @@
-langage: python
-sudo: required
+language: python
 python:
-  - '3.7'
-virtualenv:
-  system_site_packages: true
+  - "3.7"  # 3.7 development branch
 # command to install dependencies
 install:
   - pip install -r requirements.txt
