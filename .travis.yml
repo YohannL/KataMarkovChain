@@ -7,4 +7,5 @@ install:
 # command to run tests
 script:
   - flake8
+  - pylint --score=y */*.py
   - pytest

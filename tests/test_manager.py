@@ -1,12 +1,24 @@
-from KataMarkovChain.Core.Manager import Manager
+"""
+Project: katamarkovchain
+Module: tests
+file: test_manager.py
+Class: TestManager
+"""
+from katamarkovchain.core.manager import Manager
 
-SPLIT_PATH = "KataMarkovChain.Core.TextSplitter.TextSplitter.split"
+SPLIT_PATH = "katamarkovchain.core.TextSplitter.TextSplitter.split"
 
 
 class TestManager:
-
+    """
+    pytest class with all tests
+    """
     @staticmethod
     def test_create_new_mv():
+        """
+        Test the creation of one markov chain
+        :return:
+        """
         manager = Manager()
         new_mv = manager.create_new_mv("test")
         assert new_mv is not None
@@ -14,6 +26,10 @@ class TestManager:
 
     @staticmethod
     def test_create_unique_new_mv():
+        """
+        Test the unicity of two markov chain objects with the same word
+        :return:
+        """
         manager = Manager()
         new_mv_1 = manager.create_new_mv("test")
         new_mv_2 = manager.create_new_mv("test")
@@ -25,6 +41,10 @@ class TestManager:
 
     @staticmethod
     def test_manager_run():
+        """
+        test TODO
+        :return:
+        """
         manager = Manager()
         manager.run("This is a test.")
         assert True

@@ -1,23 +1,43 @@
-from KataMarkovChain.Core.MarkovChain import MarkovChain
+"""
+Project: katamarkovchain
+Module: tests
+file: test_markov_chain.py
+Class: TestMarkovChain
+"""
 import pytest
+from katamarkovchain.core.markovchain import MarkovChain
 
 
 class TestMarkovChain:
-
+    """
+    pytest class with all tests
+    """
     @staticmethod
     def test_init_markov():
+        """
+        Test the creation of Markov Object
+        :return:
+        """
         word = "test"
         markovchain = MarkovChain(word)
         assert word == markovchain.word
 
     @staticmethod
     def test_get_self():
+        """
+        Test the function get
+        :return:
+        """
         word = "test"
         markovchain = MarkovChain(word)
         assert markovchain.get_self() is markovchain
 
     @staticmethod
-    def test_add_transitions():
+    def test_add_new_transitions():
+        """
+        Test the function to add new transitions
+        :return:
+        """
         markovchain1 = MarkovChain('test1')
         markovchain2 = MarkovChain('test2')
         markovchain1.add_transition(markovchain2.get_self())
@@ -30,7 +50,12 @@ class TestMarkovChain:
 
     @staticmethod
     @pytest.fixture
-    def test_get_newt_transition(mocker):
+    def test_get_transition(mocker):
+        """
+        Test to get transition
+        :param mocker:
+        :return:
+        """
         markovchain1 = MarkovChain('test1')
         markovchain2 = MarkovChain('test2')
         markovchain3 = MarkovChain('test3')
@@ -38,11 +63,9 @@ class TestMarkovChain:
         assert markovchain1.get_next_transition() is markovchain2
         markovchain1.add_transition(markovchain3.get_self())
 
-        mocker.patch('Core.MarkovChain.generator_random_number',
+        mocker.patch('core.MarkovChain.generator_random_number',
                      return_value=1)
-        for i in range(1000):
-            assert markovchain1.get_next_transition() is markovchain2
-        mocker.patch('Core.MarkovChain.generator_random_number',
+        assert markovchain1.get_next_transition() is markovchain2
+        mocker.patch('core.MarkovChain.generator_random_number',
                      return_value=2)
-        for i in range(1000):
-            assert markovchain1.get_next_transition() is markovchain3
+        assert markovchain1.get_next_transition() is markovchain3
