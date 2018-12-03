@@ -1,4 +1,4 @@
-from KataMarkovChain.Core.MarkovChain import MarkovChain, generator_random_number
+from KataMarkovChain.Core.MarkovChain import MarkovChain
 import pytest
 
 
@@ -38,9 +38,11 @@ class TestMarkovChain:
         assert markovchain1.get_next_transition() is markovchain2
         markovchain1.add_transition(markovchain3.get_self())
 
-        mocker.patch('Core.MarkovChain.generator_random_number', return_value=1)
+        mocker.patch('Core.MarkovChain.generator_random_number',
+                     return_value=1)
         for i in range(1000):
             assert markovchain1.get_next_transition() is markovchain2
-        mocker.patch('Core.MarkovChain.generator_random_number', return_value=2)
+        mocker.patch('Core.MarkovChain.generator_random_number',
+                     return_value=2)
         for i in range(1000):
             assert markovchain1.get_next_transition() is markovchain3
