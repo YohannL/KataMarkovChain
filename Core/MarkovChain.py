@@ -5,7 +5,7 @@ def generator_random_number(min, max):
     return randint(min, max)
 
 
-class MarkovChain():
+class MarkovChain:
 
     def __init__(self, word: str):
         self.word = word
@@ -26,7 +26,6 @@ class MarkovChain():
             max_random += value
 
         random_next_gen = generator_random_number(1, max_random)
-        print('random_next_gen ', random_next_gen)
         for state, value in self.transition_state.items():
             print(state, value)
             random_next_gen -= int(value)
