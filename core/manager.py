@@ -12,11 +12,12 @@ class Manager:
     """
     Manager class will manager all process
     """
+
     def __init__(self):
         """
         Standard initialization
         """
-        self.markovchainlist = []
+        self.markovchainlist = {}
 
     def create_new_mv(self, word):
         """
@@ -26,13 +27,11 @@ class Manager:
         :return: pointer of the makov chain object
         """
         found_mv = None
-        for mv_element in self.markovchainlist:
-            if mv_element.word is not None and\
-                    mv_element.word.lower() == word.lower():
-                found_mv = mv_element
-        if not found_mv:
+        if self.markovchainlist.get(word.lower()):
+            found_mv = self.markovchainlist.get(word.lower())
+        else:
             found_mv = MarkovChain(word.lower())
-            self.markovchainlist.append(found_mv)
+            self.markovchainlist[word.lower()] = found_mv
         return found_mv
 
     def run(self, text):
@@ -44,7 +43,7 @@ class Manager:
         """
         list_sentence = sentencesplitter(text)
         start_mv = MarkovChain(None)
-        self.markovchainlist.append(start_mv)
+        self.markovchainlist[None] = start_mv
         previous_mv = start_mv
         for word in list_sentence:
             actual_mv = self.create_new_mv(word)
