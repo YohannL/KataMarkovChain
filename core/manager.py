@@ -50,12 +50,38 @@ class Manager:
             actual_mv = self.create_new_mv(word)
             previous_mv.add_transition(actual_mv)
             previous_mv = actual_mv
+            if word == ".":
+                actual_mv.add_transition(start_mv)
+                previous_mv = start_mv
 
-    def run(self, text):
+    def generator_text(self, number):
+        """
+        :param number:
+        :return:
+        """
+        generated_text = ""
+        actual_mv = self.markovchainlist[None]
+        while number > 0:
+            actual_mv = actual_mv.get_next_transition()
+            if actual_mv.word == ".":
+                generated_text += actual_mv.word
+                number -= 1
+            elif generated_text == "":
+                generated_text += actual_mv.word
+            else:
+                generated_text += " " + actual_mv.word
+        return generated_text
+
+    def run(self, text, numbersentences=0):
         """
         Run function will call the splitter function and
         create markov chain list
-        :param text: to split and to create markov chain
+        :param text:
+        :param numbersentences:
         :return:
         """
-        self.creation_all_mv(text)
+        if text:
+            self.creation_all_mv(text)
+            if self.markovchainlist:
+                generated_text = self.generator_text(numbersentences)
+                print(generated_text)
