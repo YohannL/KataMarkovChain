@@ -1,4 +1,5 @@
 import sys
+
 sys.path.append('..')
 from katamarkovchain.core.manager import Manager
 
