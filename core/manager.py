@@ -65,6 +65,7 @@ class Manager:
             actual_mv = actual_mv.get_next_transition()
             if actual_mv.word == ".":
                 generated_text += actual_mv.word
+                actual_mv = self.markovchainlist[None]
                 number -= 1
             elif generated_text == "":
                 generated_text += actual_mv.word
@@ -84,4 +85,5 @@ class Manager:
             self.creation_all_mv(text)
             if self.markovchainlist:
                 generated_text = self.generator_text(numbersentences)
-                print(generated_text)
+                return generated_text
+        return None
