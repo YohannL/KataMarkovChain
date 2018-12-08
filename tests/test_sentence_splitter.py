@@ -4,7 +4,7 @@ Module: tests
 file: test_sentence_splitter.py
 Class: TestSentenceSplitter
 """
-from katamarkovchain.core.sentencesplitter import sentencesplitter
+from katamarkovchain.core.sentencesplitter import SentenceSplitter
 
 
 class TestSentenceSplitter:
@@ -19,7 +19,8 @@ class TestSentenceSplitter:
         """
         sentence = "Hey i am a test"
         expected_output = ["Hey", "i", "am", "a", "test"]
-        assert sentencesplitter(sentence) == expected_output
+        sentencesplitter = SentenceSplitter()
+        assert sentencesplitter.run(sentence) == expected_output
 
     @staticmethod
     def test_split_one_coma_sentence():
@@ -29,7 +30,8 @@ class TestSentenceSplitter:
         """
         sentence = "Hey i am a test."
         expected_output = ["Hey", "i", "am", "a", "test", "."]
-        assert sentencesplitter(sentence) == expected_output
+        sentencesplitter = SentenceSplitter()
+        assert sentencesplitter.run(sentence) == expected_output
 
     @staticmethod
     def test_split_two_coma_sentence():
@@ -39,4 +41,5 @@ class TestSentenceSplitter:
         """
         sentence = "Hey i am a test. Another"
         expected_output = ["Hey", "i", "am", "a", "test", ".", "Another"]
-        assert sentencesplitter(sentence) == expected_output
+        sentencesplitter = SentenceSplitter()
+        assert sentencesplitter.run(sentence) == expected_output

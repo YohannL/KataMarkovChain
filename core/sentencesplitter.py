@@ -2,15 +2,22 @@
 Project: katamarkovchain
 Module: Core
 file: sentencesplitter.py
-Function: sentencesplitter
+class: SentenceSplitter
 """
 import re
 
 
-def sentencesplitter(sentence):
+class SentenceSplitter:
     """
-    To split a sentence
-    :param sentence: Sentence to split
-    :return: list of the seperate words
+    SentenceSplitter class to split a sentence
     """
-    return re.findall(r"[\w']+|[.,!?;]", sentence)
+
+    # pylint: disable=too-few-public-methods
+    # pylint: disable=no-self-use
+    def run(self, sentence):
+        """
+        To split a sentence
+        :param sentence: Sentence to split
+        :return: list of the seperate words
+        """
+        return re.findall(r"[\w']+|[.,!?;]", sentence)

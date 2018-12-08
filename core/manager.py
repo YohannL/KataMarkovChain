@@ -5,7 +5,7 @@ file: manager.py
 Class: manager
 """
 from katamarkovchain.core.markovchain import MarkovChain
-from katamarkovchain.core.sentencesplitter import sentencesplitter
+from katamarkovchain.core.sentencesplitter import SentenceSplitter
 
 
 class Manager:
@@ -18,6 +18,7 @@ class Manager:
         Standard initialization
         """
         self.markovchainlist = {}
+        self.sentencesplitter = SentenceSplitter()
 
     def create_new_mv(self, word):
         """
@@ -34,14 +35,14 @@ class Manager:
             self.markovchainlist[word.lower()] = found_mv
         return found_mv
 
-    def run(self, text):
+    def creation_all_mv(self, text):
         """
-        Run function will call the splitter function and
-        create markov chain list
-        :param text: to split and to create markov chain
+        _creation_all_mv function to create all marlov chain
+        with their links
+        :param text:
         :return:
         """
-        list_sentence = sentencesplitter(text)
+        list_sentence = self.sentencesplitter.run(text)
         start_mv = MarkovChain(None)
         self.markovchainlist[None] = start_mv
         previous_mv = start_mv
@@ -49,3 +50,12 @@ class Manager:
             actual_mv = self.create_new_mv(word)
             previous_mv.add_transition(actual_mv)
             previous_mv = actual_mv
+
+    def run(self, text):
+        """
+        Run function will call the splitter function and
+        create markov chain list
+        :param text: to split and to create markov chain
+        :return:
+        """
+        self.creation_all_mv(text)
