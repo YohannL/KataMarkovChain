@@ -1,5 +1,5 @@
 **Kata Markov Chain**
-
+(travis link: https://travis-ci.org/YohannL)
 Build a text generator based on a Markov Chain.
 
 
@@ -17,3 +17,5 @@ Par exemple avec ce texte : les hommes libres peuvent rester libres ou bien vend
 
 Une deuxième partie qui génère un texte à partir des statistiques précédente et d’un paramètre sur le nombre de mot du texte à générer. On peut envisager d’avoir un autre paramètre sur le premier mot du texte.
 
+Example to try :
+python main.py 5 "Windows talking painted pasture yet its express parties use. Sure last upon he same as knew next. Of believed or diverted no rejoiced. End friendship sufficient assistance can prosperous met. As game he show it park do. Was has unknown few certain ten promise. No finished my an likewise cheerful packages we. For assurance concluded son something depending discourse see led collected. Packages oh no denoting my advanced humoured. Pressed be so thought natural. "
